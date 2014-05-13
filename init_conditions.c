@@ -16,13 +16,14 @@
 // u(x,0) = N(N+1)/cosh(x)^2  N = 0.25
 double initFunc1(double x, double y)
 {
-    double N = 0.25;
-    double tmp = cosh(x - 20);
-    return N * (N + 1) / (tmp * tmp);
+    double c = 5 ;
+    double tmp = cosh( sqrt(c) * (x-2.5) / 2);
+    return c / (tmp * tmp) / 2;
+    //return sin(x);
 }
 
 // u(x,0) = N(N+1)/cosh(x)^2  N = 1
-double initFunc2(double x)
+double initFunc2(double x, double y)
 {
     double N = 1;
     double tmp = cosh(x - 20);
@@ -30,7 +31,7 @@ double initFunc2(double x)
 }
 
 // one solition: u(x,0)= (c/2)/cosh2(√c / 2)
-double initFunc3(double x)
+double initFunc3(double x, double y)
 {
     double c = 5 ;
     double tmp = cosh( sqrt(c) * (x-20) / 2);
@@ -38,7 +39,7 @@ double initFunc3(double x)
 }
 
 // two solitions: u(x,0)= (c1/2)/cosh2(√c1 / 2) + (c2/2)/cosh2(√c2 / 2)
-double initFunc4(double x)
+double initFunc4(double x, double y)
 {
     double c1 = 10;
     double c2 = 3;

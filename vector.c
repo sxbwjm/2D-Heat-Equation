@@ -7,37 +7,50 @@
 //
 
 #include <stdio.h>
+#include "common.h"
 
 void vector_init(double result[Y_N][X_N])
 {
-    for(int i=0; i < Y_N; i++)
+    for(int y = 0; y < Y_N; y++)
     {
-        for(int j=0; j < X_N; j++)
+        for(int x = 0; x < X_N; x++)
         {
-            result[i] = 0.0;
+            result[y][x] = 0.0;
         }
     }
 }
-void vector_add(double result[], double v1[], double v2[], int size)
+
+void vector_add(double result[Y_N][X_N], double v1[Y_N][X_N], double v2[Y_N][X_N])
 {
-    for(int i=0; i < size; i++)
+    for(int y = 0; y < Y_N; y++)
     {
-        result[i] = v1[i] + v2[i];
+        for(int x = 0; x < X_N; x++)
+        {
+            result[y][x] = v1[y][x] + v2[y][x];
+        }
+    }
+    
+}
+
+void vector_mul_const(double result[Y_N][X_N], double v1[Y_N][X_N], double k)
+{
+    for(int y = 0; y < Y_N; y++)
+    {
+        for(int x = 0; x < X_N; x++)
+        {
+            result[y][x] = v1[y][x] * k;
+        }
     }
 }
 
-void vector_mul_const(double result[], double v1[], double k, int size)
+void vector_copy(double src[Y_N][X_N], double dest[Y_N][X_N])
 {
-    for(int i=0; i < size; i++)
+    for(int y = 0; y < Y_N; y++)
     {
-        result[i] = v1[i] * k;
+        for(int x = 0; x < X_N; x++)
+        {
+            dest[y][x] = src[y][x];
+        }
     }
-}
 
-void vector_copy(double src[], double dest[], int size)
-{
-    for(int i=0; i < size; i++)
-    {
-        dest[i] = src[i];
-    }
 }

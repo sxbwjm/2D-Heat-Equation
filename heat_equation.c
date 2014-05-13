@@ -37,25 +37,22 @@ void rhsFunc(double U[Y_N][X_N], double newU[Y_N][X_N])
 {
     double ux_1, ux, ux1;
     double uy_1, uy, uy1;
-    int sizeX = X_N;
-    int sizeY = Y_N;
-    int i, j;
     
     double C = 1.0;
     
-    for(i=0; i<sizeX; i++)
+    for(int y=0; y<Y_N; y++)
     {
-        for(j=0; j<sizeY; j++)
+        for(int x=0; x<X_N; x++)
         {
             // test boundaries
-            ux_1 = (j - 1 >= 0) ? U[i][j - 1] : U[i][j - 1 + sizeX];
-            ux = U[i][j];
-            ux1 = (j + 1 < sizeX) ? U[i][j + 1] : U[i][j + 1 - sizeX];
+            ux_1 = (x - 1 >= 0) ? U[y][x - 1] : U[y][x - 1 + X_N];
+            ux = U[y][x];
+            ux1 = (x + 1 < X_N) ? U[y][x + 1] : U[y][x + 1 - X_N];
        
-            uy_1 = (i - 1 >= 0) ? U[i - 1][j] : U[i - 1 + sizeY][j];
-            uy = U[i][j];
-            uy1 = (i + 1 < sizeY) ? U[i + 1][j] : U[i + 1 - sizeY][j];
-            newU[i][j] = C * ( D2U(ux_1, ux, ux1, DELTA_X) +
+            uy_1 = (y - 1 >= 0) ? U[y - 1][x] : U[y - 1 + Y_N][x];
+            uy = U[y][x];
+            uy1 = (y + 1 < Y_N) ? U[y + 1][x] : U[y + 1 - Y_N][x];
+            newU[y][x] = C * ( D2U(ux_1, ux, ux1, DELTA_X) +
                                D2U(uy_1, uy, uy1, DELTA_Y) );
         }
     }

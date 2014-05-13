@@ -7,13 +7,16 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
 #include "common.h"
 
 #define INIT_FUNC_NUM 4
 
 int printMenu(char* funcNames[]);
-void Ut0( double (*f)(double x), double U[]);
-void writeUtoFile(char* fileName, double U[]);
+void Ut0( double (*f)(double x, double y), double U[Y_N][X_N]);
+void writeUtoFile(char* fileName, double U[Y_N][X_N]);
 
 /*************************************************************
  *              main starts from here
@@ -76,7 +79,7 @@ int main(int argc, const char * argv[])
         }
         
         // update U
-        vector_copy(newU, U, X_N);
+        vector_copy(newU, U);
     }
     
     // create plot script
@@ -104,7 +107,7 @@ int printMenu(char* funcNames[])
     }
     printf("***********************************************************\n");
     printf("Enter number:");
-    
+    return 0;
     int result;
     while(1)
     {
@@ -128,28 +131,32 @@ int printMenu(char* funcNames[])
  *               get inital data vector
  * f: initial function
  **************************************************************/
-void Ut0( double (*f)(double x), double U[])
+void Ut0( double (*f)(double x, double y), double U[Y_N][X_N])
 {
-    int size = X_N;
-    
-    for(int i = 0; i < size; i++)
+    for(int y = 0; y < Y_N; y++)
     {
-        U[i] = (*f)(i * DELTA_X);
+        for(int x = 0; x < X_N; x++)
+        {
+            U[y][x] = (*f)(x * DELTA_X, y * DELTA_Y );
+        }
     }
 }
 
 /*************************************************************
  *           write one frame of data U to file
  **************************************************************/
-void writeUtoFile(char* fileName, double U[])
+void writeUtoFile(char* fileName, double U[Y_N][X_N])
 {
     FILE * file = fopen(fileName, "w");
     
-    for(int i = 0; i < X_N; i++)
+    for(int y = 0; y < Y_N; y++)
     {
-        fprintf(file, "%g %g\n", i * DELTA_X , U[i]);
+        for(int x = 0; x < X_N; x++)
+        {
+            fprintf(file, "%g %g %g\n", x * DELTA_X , y * DELTA_Y, U[y][x]);
+        }
     }
-    
+
     fclose(file);
 }
 

@@ -9,12 +9,12 @@
 #ifndef Project1_common_h
 #define Project1_common_h
 
-#define X_N 400
-#define Y_N 600
+#define X_N 50
+#define Y_N 20
 #define DELTA_X 0.1
 #define DELTA_Y 0.1
 
-#define T_N 200000
+#define T_N 20000
 #define DELTA_T 0.00004
 #define T_STEPS_PER_FILE 500
 
@@ -34,10 +34,10 @@ void Runge_Kutta(void (*f)(double u[Y_N][X_N], double newU[Y_N][X_N]),
 void rhsFunc(double U[Y_N][X_N], double newU[Y_N][X_N]);
 
 // initial conditions
-double initFunc1(double x);
-double initFunc2(double x);
-double initFunc3(double x);
-double initFunc4(double x);
+double initFunc1(double x, double y);
+double initFunc2(double x, double y);
+double initFunc3(double x, double y);
+double initFunc4(double x, double y);
 
 // plot script
 int createPlotScript(char* fileName, int type);
