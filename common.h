@@ -19,18 +19,18 @@
 #define T_STEPS_PER_FILE 500
 
 // vector
-void vector_init(double result[], int size);
-void vector_add(double result[], double v1[], double v2[], int size);
-void vector_mul_const(double result[], double v1[], double k, int size);
-void vector_copy(double src[], double dest[], int size);
+void vector_init(double result[Y_N][X_N]);
+void vector_add(double result[Y_N][X_N], double v1[Y_N][X_N],
+                double v2[Y_N][X_N]);
+void vector_mul_const(double result[Y_N][X_N], double v1[Y_N][X_N],
+                      double k);
+void vector_copy(double src[Y_N][X_N], double dest[Y_N][X_N]);
 
 // runge kutta
-void Runge_Kutta(void (*f)(double u[], double newU[]),
-                 double u[], double newU[]);
+void Runge_Kutta(void (*f)(double u[Y_N][X_N], double newU[Y_N][X_N]),
+                 double u[Y_N][X_N], double newU[Y_N][X_N]);
 
-// kdv
-double rhs(double u_2, double u_1, double u,
-           double u1, double u2, double deltaX);
+// heat equation
 void rhsFunc(double U[Y_N][X_N], double newU[Y_N][X_N]);
 
 // initial conditions

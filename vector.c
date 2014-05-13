@@ -8,11 +8,14 @@
 
 #include <stdio.h>
 
-void vector_init(double result[], int size)
+void vector_init(double result[Y_N][X_N])
 {
-    for(int i=0; i < size; i++)
+    for(int i=0; i < Y_N; i++)
     {
-        result[i] = 0.0;
+        for(int j=0; j < X_N; j++)
+        {
+            result[i] = 0.0;
+        }
     }
 }
 void vector_add(double result[], double v1[], double v2[], int size)

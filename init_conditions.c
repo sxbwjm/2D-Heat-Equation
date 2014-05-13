@@ -14,7 +14,7 @@
  **************************************************************/
 
 // u(x,0) = N(N+1)/cosh(x)^2  N = 0.25
-double initFunc1(double x)
+double initFunc1(double x, double y)
 {
     double N = 0.25;
     double tmp = cosh(x - 20);

@@ -41,6 +41,8 @@ void rhsFunc(double U[Y_N][X_N], double newU[Y_N][X_N])
     int sizeY = Y_N;
     int i, j;
     
+    double C = 1.0;
+    
     for(i=0; i<sizeX; i++)
     {
         for(j=0; j<sizeY; j++)
