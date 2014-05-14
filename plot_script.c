@@ -25,10 +25,10 @@ int createPlotScript(char* fileName, int type)
             yRange = 2.5;
             break;
         case 1:
-            yRange = 2.5;
+            yRange = 5;
             break;
         case 2:
-            yRange = 3;
+            yRange = 10;
             break;
         case 3:
             yRange = 6;
@@ -40,7 +40,7 @@ int createPlotScript(char* fileName, int type)
     // file number
     int fileNum = T_N / T_STEPS_PER_FILE - 1;
     fprintf(f, "if (exist(\"n\")==0 || n<0) n=0\n");
-    fprintf(f, "splot [0:%f] [0:%f] [0:%f] sprintf(\"output/data-%%d\", n)", X_N * DELTA_X, Y_N * DELTA_Y, yRange);
+    fprintf(f, "splot [0:%f] [0:%f] [0:%f] sprintf(\"output/data-%%d\", n) with pm3d", X_N * DELTA_X, Y_N * DELTA_Y, yRange);
     fprintf(f, " title sprintf(\"time:%%f\", n * %f)\n",  DELTA_T * T_STEPS_PER_FILE);
     fprintf(f,"if (n<%d) n=n+1; pause 0.01; reread\n", fileNum);
     fprintf(f,"n=-1\n");

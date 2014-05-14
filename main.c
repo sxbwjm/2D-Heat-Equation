@@ -107,7 +107,7 @@ int printMenu(char* funcNames[])
     }
     printf("***********************************************************\n");
     printf("Enter number:");
-    return 0;
+
     int result;
     while(1)
     {
@@ -155,6 +155,7 @@ void writeUtoFile(char* fileName, double U[Y_N][X_N])
         {
             fprintf(file, "%g %g %g\n", x * DELTA_X , y * DELTA_Y, U[y][x]);
         }
+        fprintf(file,"\n");
     }
 
     fclose(file);
