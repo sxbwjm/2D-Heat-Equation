@@ -14,9 +14,6 @@ if test -z "$CC" || test "X$CC" = "Xno"; then
 fi
 AM_PROG_CC_C_O
 
-# add -Wall if possible
-AX_CHECK_COMPILER_FLAGS([-Wall], [CFLAGS="$CFLAGS -Wall"])
-
 AC_PROG_RANLIB
 
 # Check for debugging 
