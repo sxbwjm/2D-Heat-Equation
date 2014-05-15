@@ -53,7 +53,3 @@ double initFunc3(double x, double y)
     return c1 / (tmp1 * tmp1) / 2 +
            c2 / (tmp2 * tmp2) / 2;
 }
-double initFunc4(double x, double y)
-{
-    return 0;
-}

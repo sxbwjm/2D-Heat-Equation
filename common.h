@@ -15,7 +15,7 @@
 #define DELTA_Y 0.1
 
 #define T_N 50000
-#define DELTA_T 0.001
+#define DELTA_T 0.0001
 #define T_STEPS_PER_FILE 1000
 
 // vector

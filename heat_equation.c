@@ -25,8 +25,6 @@ double D2U(double u_1, double u, double u1, double delta)
     return D1U( D1U(u_1, u, delta), D1U(u, u1, delta), delta );
 }
 
-
-
 /*************************************************************
  *               function for Runge–Kutta
  *

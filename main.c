@@ -12,7 +12,7 @@
 #include <time.h>
 #include "common.h"
 
-#define INIT_FUNC_NUM 4
+#define INIT_FUNC_NUM 3
 
 int printMenu(char* funcNames[]);
 void Ut0( double (*f)(double x, double y), double U[Y_N][X_N]);
@@ -32,14 +32,12 @@ int main(int argc, const char * argv[])
     double (*initFuncs[])(double x, double y) = {
         initFunc1,
         initFunc2,
-        initFunc3,
-        initFunc4
+        initFunc3
     };
     char* funcNames[] = {
-        "u(x,y,0) = N(N+1)/cosh(x-20)^2\t\tN = 0.25",
-        "u(x,y,0) = N(N+1)/cosh(x-20)^2\t\tN = 1",
-        "u(x,y,0) = (c/2)/cosh2(√c/2 * (x-20))\tc = 10",
-        "u(x,y,0) = (c1/2)/cosh2(√c1/2 * (x-10)+(c2/2)/cosh2(√c2/2 * (x-20))"
+        "one hot spot - type 1",
+        "one hot spot - type 2",
+        "two hot spots"
     };
     
     int useFunc = printMenu(funcNames);
