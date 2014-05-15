@@ -9,6 +9,9 @@
 #include <stdio.h>
 #include "common.h"
 
+/*************************************************************
+ *   create gnuplot script for ploting result in animation
+ **************************************************************/
 int createPlotScript(char* fileName, int type)
 {
     FILE* f = fopen(fileName, "w");
@@ -32,9 +35,6 @@ int createPlotScript(char* fileName, int type)
         case 2:
             zRange = 10;
             break;
-        case 3:
-            zRange = 6;
-            break;
         default:
             break;
     }
@@ -51,8 +51,23 @@ int createPlotScript(char* fileName, int type)
     fprintf(f, "set zrange [0:%f]\n", zRange);
     fprintf(f, "set cbrange [0:%f]\n", zRange);
     // plot
-    fprintf(f, "splot sprintf(\"output/data-%%d\", n) with pm3d");
+    
+    fprintf(f, "splot sprintf(\"< cat ");
+    for(int i = 0; i < glbSize; i++)
+    {
+        fprintf(f, "output/data-%d-%%d ", i);
+    }
+    
+    fprintf(f, "\"");
+    
+    for(int i = 0; i < glbSize; i++)
+    {
+        fprintf(f, ",n");
+    }
+    
+    fprintf(f, ") with pm3d");
     fprintf(f, " title sprintf(\"time:%%f\", n * %f)\n", deltaTime);
+    
     // loop
     fprintf(f,"if (n<%d) n=n+1; pause 0.01; reread\n", fileNum);
     fprintf(f,"n=-1\n");

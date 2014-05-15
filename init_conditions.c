@@ -14,7 +14,7 @@
  *               functions for inital condition
  **************************************************************/
 
-// u(x,y,0) = (c/2)/cosh^2(√c/2 * (x-2.5))
+// one hot spot - 1
 double initFunc1(double x, double y)
 {
     double c = 5 ;
@@ -22,7 +22,7 @@ double initFunc1(double x, double y)
     return c / (tmp * tmp) / 2;
 }
 
-// u(x,y,0) = (c/2)/cosh^2(√c/2 * (r-2.5))
+// one hot spot - 2
 double initFunc2(double x, double y)
 {
     x = x - 2.5;
@@ -34,6 +34,7 @@ double initFunc2(double x, double y)
     return c / (tmp * tmp) / 2;
 }
 
+// two hot spots
 double initFunc3(double x, double y)
 {
     double x1 = x - 1.5;
