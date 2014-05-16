@@ -69,7 +69,7 @@ int createPlotScript(char* fileName, int type)
     fprintf(f, " title sprintf(\"time:%%f\", n * %f)\n", deltaTime);
     
     // loop
-    fprintf(f,"if (n<%d) n=n+1; pause 0.1; reread\n", fileNum);
+    fprintf(f,"if (n<%d) n=n+1; pause 0.2; reread\n", fileNum);
     fprintf(f,"n=-1\n");
     
     fclose(f);

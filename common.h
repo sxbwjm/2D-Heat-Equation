@@ -16,7 +16,7 @@
 
 #define T_N 4000
 #define DELTA_T 0.0002
-#define T_STEPS_PER_FILE 200
+#define T_STEPS_PER_FILE 100
 
 int glbRank, glbSize;
 int glbYStart, glbYEnd;
