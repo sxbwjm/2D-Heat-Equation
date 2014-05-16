@@ -10,11 +10,11 @@
 #define Project1_common_h
 
 #define X_N 100
-#define Y_N 50
+#define Y_N 40
 #define DELTA_X 0.05
 #define DELTA_Y 0.1
 
-#define T_N 2000
+#define T_N 4000
 #define DELTA_T 0.0002
 #define T_STEPS_PER_FILE 100
 
